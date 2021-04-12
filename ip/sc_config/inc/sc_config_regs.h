@@ -96,7 +96,8 @@ typedef union {
         alt_u8 mask_color:3;
         alt_u8 rev_lpf_str:5;
         alt_u8 panasonic_hack:1;
-        alt_u32 misc_rsv:19;
+        alt_u8 h_synclen_top:1;
+        alt_u32 misc_rsv:18;
     } __attribute__((packed, __may_alias__));
     alt_u32 data;
 } misc_config_reg;

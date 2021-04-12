@@ -188,7 +188,7 @@ reg [2:0] pclk_5x_cnt;
 
 //configuration registers
 reg [10:0] H_ACTIVE;    //max. 2047
-reg [9:0] H_AVIDSTART;  //max. 1023
+reg [10:0] H_AVIDSTART;  //max. 2047
 reg [10:0] V_ACTIVE;    //max. 2047
 reg [7:0] V_AVIDSTART;  //max. 255
 reg [7:0] H_SYNCLEN;
@@ -903,7 +903,7 @@ begin
             V_MULTMODE <= v_config[31:29];    // Line multiply mode
 
             H_SYNCLEN <= h_config[27:20];                     // Horizontal sync length (0...255)
-            H_AVIDSTART <= h_config[19:11] + h_config[27:20];   // Horizontal sync+backporch length (0...1023)
+            H_AVIDSTART <= {misc_config[13], h_config[19:11]} + h_config[27:20];   // Horizontal sync+backporch length (0...2047)
             H_ACTIVE <= h_config[10:0];                       // Horizontal active length (0...2047)
 
             V_SYNCLEN <= v_config[21:19];                     // Vertical sync length (0...7)

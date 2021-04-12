@@ -604,11 +604,13 @@ void update_sc_config()
     h_opt_startoffs = h_border + (cm.sample_mult-h_opt_scale)*(h_synclen+(alt_u16)video_modes[cm.id].h_backporch);
     printf("h_border: %u, h_opt_startoffs: %u\n", h_border, h_opt_startoffs);
 
+    alt_u16 hback  = (cm.sample_mult*(alt_u16)video_modes[cm.id].h_backporch);
+
     h_config.h_multmode = cm.fpga_hmultmode;
     h_config.h_l5fmt = (cm.cc.l5_fmt!=L5FMT_1600x1200);
     h_config.h_l3_240x360 = (cm.target_lm==MODE_L3_240x360);
     h_config.h_synclen = (cm.sample_mult*h_synclen);
-    h_config.h_backporch = (cm.sample_mult*(alt_u16)video_modes[cm.id].h_backporch);
+    h_config.h_backporch = hback; // 9 bits
     h_config.h_active = (cm.sample_mult*video_modes[cm.id].h_active);
 
     h_config2.h_mask = h_mask;
@@ -627,6 +629,7 @@ void update_sc_config()
     misc_config.mask_br = cm.cc.mask_br;
     misc_config.mask_color = cm.cc.mask_color;
     misc_config.panasonic_hack = cm.cc.panasonic_hack;
+    misc_config.h_synclen_top = (hback & 0x200) != 0;
 
     sl_config.sl_l_str_arr = sl_l_str_arr;
     sl_config.sl_l_overlay = sl_l_overlay;

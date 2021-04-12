@@ -30,7 +30,7 @@
 #define H_SYNCLEN_MIN 10
 #define H_SYNCLEN_MAX 255
 #define H_BPORCH_MIN 1
-#define H_BPORCH_MAX 255
+#define H_BPORCH_MAX 2000
 #define H_ACTIVE_MIN 200
 #define H_ACTIVE_MAX 1920
 #define V_SYNCLEN_MIN 1
@@ -103,7 +103,7 @@ typedef struct {
     alt_u16 h_total;
     alt_u8  h_total_adj:5;
     alt_u16 v_total:11;
-    alt_u8 h_backporch;
+    alt_u16 h_backporch;
     alt_u8 v_backporch;
     alt_u8 h_synclen;
     alt_u8 v_synclen;

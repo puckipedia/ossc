@@ -468,7 +468,7 @@ static void vm_tweak(alt_u16 *v) {
         if ((video_modes[cm.id].h_total != tc_h_samplerate) ||
             (video_modes[cm.id].h_total_adj != (alt_u8)tc_h_samplerate_adj) ||
             (video_modes[cm.id].h_synclen != tc_h_synclen) ||
-            (video_modes[cm.id].h_backporch != (alt_u8)tc_h_bporch) ||
+            (video_modes[cm.id].h_backporch != tc_h_bporch) ||
             (video_modes[cm.id].h_active != tc_h_active) ||
             (video_modes[cm.id].v_synclen != tc_v_synclen) ||
             (video_modes[cm.id].v_backporch != (alt_u8)tc_v_bporch) ||
@@ -479,7 +479,7 @@ static void vm_tweak(alt_u16 *v) {
     video_modes[vm_edit].h_total = tc_h_samplerate;
     video_modes[vm_edit].h_total_adj = (alt_u8)tc_h_samplerate_adj;
     video_modes[vm_edit].h_synclen = (alt_u8)tc_h_synclen;
-    video_modes[vm_edit].h_backporch = (alt_u8)tc_h_bporch;
+    video_modes[vm_edit].h_backporch = tc_h_bporch;
     video_modes[vm_edit].h_active = tc_h_active;
     video_modes[vm_edit].v_synclen = (alt_u8)tc_v_synclen;
     video_modes[vm_edit].v_backporch = (alt_u8)tc_v_bporch;
